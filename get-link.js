@@ -4,6 +4,7 @@ export const getLink = async (sharejumpUrl) => {
     const browser = await puppeteer.launch({
         headless: true, // 👀 set to true in production
         defaultViewport: { width: 390, height: 844 }, // mobile viewport
+         args: ["--no-sandbox", "--disable-setuid-sandbox"]
     });
 
     const page = await browser.newPage();
