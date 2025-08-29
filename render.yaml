@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: shein-cart-scraper
+    env: node
+    plan: free
+    region: frankfurt
+    branch: render-deploy
+    buildCommand: "npm install"
+    startCommand: "node server.js"
+    envVars:
+      - key: PUPPETEER_CACHE_DIR
+        value: /opt/render/project/.cache/puppeteer
