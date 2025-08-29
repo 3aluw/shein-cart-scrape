@@ -16,12 +16,13 @@ app.get("/scrape", async (req, res) => {
 
   try {
     const products = await getProductsInfo(url);
-    res.json(products);
+    return res.status(200).json({ success: true, products });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: err.message });
+    return res.status(500).json({ success: false, error: err.message });
   }
 });
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Server listening on port ${PORT}`);

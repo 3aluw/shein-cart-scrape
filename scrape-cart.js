@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer'
 
 export async function scrapeCart(url) {
-  const browser = await puppeteer.launch({ headless: true })
+  const browser = await puppeteer.launch({ headless: true, args: ["--no-sandbox", "--disable-setuid-sandbox"] })
   const page = await browser.newPage()
 
   // Spoof mobile
@@ -28,7 +28,7 @@ export async function scrapeCart(url) {
   })
 
   console.log('🛒 Extracted products:', products)
-
+  return products
   await browser.close()
 }
 
